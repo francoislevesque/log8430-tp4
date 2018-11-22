@@ -3,6 +3,7 @@ import com.mongodb.spark._
 import com.mongodb.spark.sql._
 import org.bson.Document
 import com.mongodb.spark.config._
+import org.apache.spark.rdd.RDD
 
 object GettingStarted {
 
@@ -26,11 +27,10 @@ object GettingStarted {
 
     // Print contents of products table.
     println(df.show())
-    //println(rdd.first.toJson)
 
     // Convert data fram to resilient distributed dataset (RDD)
-    val rows: RDD[Row] = df.rdd
-    println(rows.show())
+    val rows: org.apache.spark.rdd.RDD[org.apache.spark.sql.Row] = df.rdd
+    rows.collect().foreach(println)
     
   }
 }
