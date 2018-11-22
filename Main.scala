@@ -21,10 +21,17 @@ object GettingStarted {
       .config("spark.mongodb.output.uri", "mongodb://127.0.0.1:27017/log8430-tp4.frequent_products")
       .getOrCreate()
 
+    // Load products table into data frame.
     val df = MongoSpark.load(spark)
 
+    // Print contents of products table.
     println(df.show())
     //println(rdd.first.toJson)
+
+    // Convert data fram to resilient distributed dataset (RDD)
+    val rows: RDD[Row] = df.rdd
+    println(rows.show())
+    
   }
 }
 
