@@ -19,11 +19,11 @@ object GettingStarted {
       .config("spark.mongodb.output.uri", "mongodb://admin:secret@0.0.0.0:27017/log8430-tp4.frequent_products")
       .getOrCreate()
 
-    println("Is working!")
+    val readConfig = ReadConfig(Map("uri" -> "mongodb://admin:secret@0.0.0.0:27017/log8430-tp4.products", "readPreference.name" -> "secondaryPreferred"))
+    val df = MongoSpark.load(spark)
 
-    val rdd = MongoSpark.load(sc)
-    println(rdd.count)
-    println(rdd.first.toJson)
+    println(df.count)
+    //println(rdd.first.toJson)
   }
 }
 
