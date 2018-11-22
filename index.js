@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const shelljs = require('shelljs')
 
 const app = express()
 const db = require('./scripts/db')
@@ -27,10 +28,6 @@ function deleteInvoice(invoiceId) {
 
 function getProducts() {
     return db.mongoose.model('products').find({})
-}
-
-function getProduct(productId) {
-    return db.mongoose.model('products').find({id: productId})
 }
 
 function addProduct(body) {
