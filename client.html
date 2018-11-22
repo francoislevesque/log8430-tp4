@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client REST :( </title>
+    <script type="text/javascript" src="./scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./scripts/client.js"></script>
+</head>    
+<body>
+    <h1>Application cool !!</h1>
+
+    <h3>Get tous les produits cools</h3>
+    <form id="get-products">
+        <button type="submit">Get products</button>
+    </form>
+
+    <table id="products" style="display: none;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom cool</th>
+                <th>Prix incroyable</th>
+                <th>Ajouter</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h3>Ajouter un produit trop cool!</h3>
+    
+    <form id="create-product">
+        <label>Nom cool du produit</label>
+        <input id="product-name" type="text" />
+        <label>Prix trop cool</label>        
+        <input id="product-price" type="number" min="0"/>
+        <button type="submit">Ajouter</button>
+        <p id="product-res" style="display: none;"></p>
+    </form>
+</body>
+</html>
+
