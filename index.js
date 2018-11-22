@@ -1,9 +1,10 @@
-var express = require('express');
-var app = express();
+const express = require('express')
+const app = express()
 
-app.set('port', 3009);
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+})
 
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/', function(req, res) {
-  res.send('hello world');
-});
+app.listen(3009, function () {
+  console.log('Example app listening on port 3009!')
+})
