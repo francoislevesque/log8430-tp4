@@ -25,7 +25,7 @@ RUN apt-get update -y \
 
 
 ####downloading & unpacking Spark 2.2.1 [prebuilt for Hadoop 2.6+ and scala 2.10]
-RUN wget http://apache.mirror.triple-it.nl/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz \
+RUN wget http://httpd-mirror.sergal.org/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz \
 &&  tar -xzf spark-2.2.1-bin-hadoop2.7.tgz \
 &&  mv spark-2.2.1-bin-hadoop2.7 /opt/spark
 
