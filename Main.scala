@@ -1,13 +1,12 @@
 import com.mongodb.spark._
 import com.mongodb.spark.config.ReadConfig
 import com.mongodb.spark.sql._
-// import com.typesafe.scalalogging.slf4j.LazyLogging
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.{max, min}
 import org.bson.Document
 
-object Main extends App /* with LazyLogging */ {
-    val spark = SparkSession.builder()
+object Main extends App {
+  val spark = SparkSession.builder()
     .appName("log8430-tp4")
     .master("local[*]")
     .getOrCreate()
@@ -17,7 +16,8 @@ object Main extends App /* with LazyLogging */ {
   val data = spark.read.mongo(readConfig)
   
   data.printSchema()
-  show(data)
+  data.show()
+  data.count()
 
   /*val transactions: RDD[Array[String]] = data.map(s => s.trim.split(' '))
 
