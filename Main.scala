@@ -13,11 +13,11 @@ object Main extends App /* with LazyLogging */ {
     .getOrCreate()
 
   // Read the data from MongoDB to a DataFrame
-  val readConfig = ReadConfig(Map("uri" -> "mongodb://127.0.0.1:27017/", "database" -> "log8430-tp4", "collection" -> "invoices")) // 1)
+  val readConfig = ReadConfig(Map("uri" -> "mongodb://127.0.0.1:27017/", "database" -> "log8430-tp4", "collection" -> "invoices"))
   val data = spark.read.mongo(readConfig)
   
   data.printSchema()
-  data.show()
+  show(data)
 
   /*val transactions: RDD[Array[String]] = data.map(s => s.trim.split(' '))
 
