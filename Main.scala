@@ -17,5 +17,9 @@ object GettingStarted {
       .config("spark.mongodb.output.uri", "mongodb://admin:secret@0.0.0.0:27017/log8430-tp4.frequent_products")
       .getOrCreate()
 
+    println("Is working!")
+
   }
 }
+
+GettingStarted.main(null)
