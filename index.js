@@ -1,9 +1,11 @@
 const express = require('express')
-const mongoose = require('mongoose')
 const app = express()
+const db = require('./db')
 
 app.get('/', function (req, res) {
-    res.send('Hello World!')
+    db.mongoose.model("Invoice").find({}).then(data => {
+      res.send(data)
+    })
 })
 
 app.listen(3009, function () {
