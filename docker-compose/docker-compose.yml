@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  master:
+    build: ./spark
+    container_name: master
+    ports:
+      - "8080:8080"
+      - "7077:7077" 
+      - "8888:8888" 
+      - "8081:8081"
+    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/master.conf"]
+  slave:
+    build: ./spark
+    depends_on:
+      - master
+    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/slave.conf"]
+  db:
+    image: mongo
+    ports:
+      - 27017
+    command: "--smallfiles --logpath=/dev/null"
+  web:
+    build: ./web
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    environment:
+      PORT: 3000
+    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/app.conf"]
