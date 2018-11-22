@@ -1,6 +1,3 @@
-# the base image is a trusted java build (https://registry.hub.docker.com/_/java/)
-# FROM java:8
-
 FROM ubuntu:14.04
 
 
