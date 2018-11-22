@@ -12,13 +12,11 @@ function getInvoices() {
 }
 
 function addInvoice(body) {
-    console.log(body.products)
-    console.log(JSON.parse(body.products))
     let Invoice = db.mongoose.model('invoices')
     let invoice = new Invoice()
 
     invoice.id = body.id
-    invoice.products = body.products
+    invoice.products = JSON.parse(body.products)
 
     return invoice
 }
