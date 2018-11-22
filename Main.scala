@@ -1,5 +1,5 @@
 import com.mongodb.spark._
-import com.mongodb.spark.config.ReadConfig
+import com.mongodb.spark.config._
 import com.mongodb.spark.sql._
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.{max, min}
@@ -17,7 +17,7 @@ object Main extends App {
   
   data.printSchema()
   data.show()
-  data.count()
+  println(data.count)
 
   /*val transactions: RDD[Array[String]] = data.map(s => s.trim.split(' '))
 
