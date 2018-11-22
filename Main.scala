@@ -19,6 +19,9 @@ object GettingStarted {
 
     println("Is working!")
 
+    val rdd = MongoSpark.load(sc)
+    println(rdd.count)
+    println(rdd.first.toJson)
   }
 }
 
