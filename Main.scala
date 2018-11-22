@@ -1,4 +1,4 @@
-package com.mongodb
+import com.mongodb._
 
 object GettingStarted {
 
