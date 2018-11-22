@@ -16,9 +16,13 @@ function addInvoice(body) {
     let invoice = new Invoice()
 
     invoice.id = body.id
-    invoice.products = body.products
+    invoice.products = JSON.parse(body.products)
 
     return invoice
+}
+
+function deleteInvoice(invoiceId) {
+    return db.mongoose.model("invoices").deleteOne({id: invoiceId});
 }
 
 function getProducts() {
@@ -83,5 +87,13 @@ app.post('/api/products', (req, res) => {
             res.status(201)
             res.send('The product has been created')
         }
+    })
+})
+
+app.delete('/api/invoices/:id', (req, res) => {
+    deleteInvoice(req.params.id).then((obj) => {
+        res.send('The product has been deleted')
+    }).catch((err) => {
+        res.send(err)
     })
 })
