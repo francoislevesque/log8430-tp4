@@ -29,7 +29,7 @@ object GettingStarted {
     // Select only raw information on number of products per invoice.
     val dfInvoices = df.select("products")
 
-    // Convert data fram to resilient distributed dataset (RDD)
+    // Convert data frame to resilient distributed dataset (RDD)
     val invoices: org.apache.spark.rdd.RDD[org.apache.spark.sql.Row] = dfInvoices.rdd
     invoices.collect().foreach(println)
 
