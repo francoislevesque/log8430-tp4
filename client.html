@@ -1,40 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Client REST :( </title>
+
+<head>    
+    <meta charset="UTF-8">
+    <title>Client REST</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="./scripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="./scripts/client.js"></script>
-</head>    
+</head>
+
 <body>
-    <h1>Application cool !!</h1>
+    <h1>Client pour service REST</h1>
 
-    <h3>Get tous les produits cools</h3>
-    <form id="get-products">
-        <button type="submit">Get products</button>
-    </form>
+    <div id="container">
+        <div class="container" id="products-container">
+            <h2>Produit</h2>
+            <h3>Nouveau Produit</h3>
 
-    <table id="products" style="display: none;">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom cool</th>
-                <th>Prix incroyable</th>
-                <th>Ajouter</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+            <form id="create-product">
+                <div class="col">
+                    <label for="product-name">Nom du produit</label>
+                    <input id="product-name" type="text" name="product-name" />
+                </div>
+                <div class="col">
+                    <label for="product-price">Prix</label>
+                    <input id="product-price" name="product-price" type="number" min="0" />
+                </div>
+                <br />
+                <button type="submit">Ajouter</button>
+                <p id="product-res" style="display: none;"></p>
+            </form>
+            
+            <h3>Tous les produits</h3>
+            <form id="get-products">
+                <button type="submit">Get products</button>
+            </form>
 
-    <h3>Ajouter un produit trop cool!</h3>
-    
-    <form id="create-product">
-        <label>Nom cool du produit</label>
-        <input id="product-name" type="text" />
-        <label>Prix trop cool</label>        
-        <input id="product-price" type="number" min="0"/>
-        <button type="submit">Ajouter</button>
-        <p id="product-res" style="display: none;"></p>
-    </form>
+            <table id="products" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom </th>
+                        <th>Prix </th>
+                        <th>Ajouter</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="container" id="invoices-container">
+            <h2>Facture</h2>
+            <h3>Nouvelle Facture</h3>
+            <table id="invoice-products" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prix unitaire</th>
+                        <th>Quantité</th>
+                        <th>Prix total</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <p id="invoice-total">Aucun produit dans la facture.. Ajoutes en !</p>
+            <form id="create-invoice"  style="display: none;">
+                <button type="submit" >Créer la facture</button>
+            </form>
+            <p id="invoice-res" style="display: none;"></p>
+            
+            <h3>Toutes les factures</h3>
+            <form id="get-invoices">
+                <button type="submit">Afficher les factures</button>
+            </form>
+            <table id="invoices" style="display: none;" cellspacing="20">
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
 </body>
-</html>
 
+</html>

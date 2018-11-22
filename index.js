@@ -44,6 +44,10 @@ function addProduct(body) {
     return product
 }
 
+function deleteProduct(productId) {
+    return db.mongoose.model("products").deleteOne({id: productId});
+}
+
 app.get('/', function (req, res) {
     getInvoices().then((invoices) => {
         res.json(invoices);
@@ -72,15 +76,17 @@ app.post('/api/invoices', (req, res) => {
     })
 })
 
-app.get('/api/products', (req, res) => {
-    getProducts().then((products) => {
-        res.json(products);
+app.delete('/api/invoices/:id', (req, res) => {
+    deleteInvoice(req.params.id).then((obj) => {
+        res.send('The product has been deleted')
+    }).catch((err) => {
+        res.send(err)
     })
 })
 
-app.get('/api/products/:id', (req, res) => {
-    getProduct(req.params.id).then((product) => {
-        res.json(product)
+app.get('/api/products', (req, res) => {
+    getProducts().then((products) => {
+        res.json(products);
     })
 })
 
@@ -96,8 +102,8 @@ app.post('/api/products', (req, res) => {
     })
 })
 
-app.delete('/api/invoices/:id', (req, res) => {
-    deleteInvoice(req.params.id).then((obj) => {
+app.delete('/api/products/:id', (req, res) => {
+    deleteProduct(req.params.id).then((obj) => {
         res.send('The product has been deleted')
     }).catch((err) => {
         res.send(err)
