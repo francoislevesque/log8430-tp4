@@ -11,9 +11,9 @@ docker-compose build
 docker-compose up -d & docker-compose scale slave=2
 
 ### Run a Spark Shell on the master
-docker run -it --net sparkcluster_default anchormen/spark /opt/spark/bin/spark-shell --master spark://master:7077
+docker run -it --net cluster_default anchormen/spark /opt/spark/bin/spark-shell --master spark://master:7077
 
 ### Submit a task to the master
 cd ../spark-driver-docker
 docker build -t anchormen/spark-driver .
-docker run --net sparkcluster_default -e "SPARK_CLASS=nl.anchormen.WordCount" anchormen/spark-driver
+docker run --net cluster_default -e "SPARK_CLASS=nl.anchormen.WordCount" anchormen/spark-driver
