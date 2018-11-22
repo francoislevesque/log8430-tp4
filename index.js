@@ -78,6 +78,12 @@ app.get('/api/products', (req, res) => {
     })
 })
 
+app.get('/api/products/:id', (req, res) => {
+    getProduct(req.params.id).then((product) => {
+        res.json(product)
+    })
+})
+
 app.post('/api/products', (req, res) => {
     addProduct(req.body).save((err) => {
         if (err) {
