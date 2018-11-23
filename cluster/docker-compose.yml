@@ -16,6 +16,11 @@ services:
     depends_on:
       - master
     command: ["/usr/bin/supervisord", "--configuration=/opt/conf/slave.conf"]
+  driver:
+    build: ./spark-driver
+    container_name: driver
+    depends_on:
+      - master
   db:
     image: mongo
     ports:
@@ -30,3 +35,7 @@ services:
     environment:
       PORT: 3000
     command: ["/usr/bin/supervisord", "--configuration=/opt/conf/app.conf"]
+  client:
+    build: ./client
+    ports:
+      - "80:80"

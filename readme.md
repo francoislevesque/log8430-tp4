@@ -14,6 +14,7 @@ docker-compose up -d && docker-compose scale slave=2
 docker run -it --net cluster_default log8430/spark /opt/spark/bin/spark-shell --master spark://master:7077
 
 ### Submit a task to the master
-cd ../spark-driver
-docker build -t log8430/spark-driver .
-docker run --net cluster_default -e "SPARK_CLASS=nl.anchormen.WordCount" log8430/spark-driver
+docker-compose exec driver bash
+opt/spark/bin/spark-submit \
+  --master spark://master:7077 \
+  opt/spark/tasks/FrequentProducts.py

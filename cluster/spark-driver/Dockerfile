@@ -11,8 +11,7 @@ RUN apt-get update -y \
 ####installing java, scala and supervisor
 &&  apt-get install -y oracle-java8-installer \
     scala \
-    python2.7 \
-    supervisor
+    python2.7
 
 ENV PYSPARK_PYTHON python2.7
 ENV PATH $PATH:$SPARK_HOME/bin
@@ -22,12 +21,6 @@ RUN wget http://httpd-mirror.sergal.org/apache/spark/spark-2.4.0/spark-2.4.0-bin
 &&  tar -xzf spark-2.4.0-bin-hadoop2.7.tgz \
 &&  mv spark-2.4.0-bin-hadoop2.7 /opt/spark
 
-#####adding conf files
-COPY master.conf /opt/conf/master.conf
-COPY slave.conf /opt/conf/slave.conf
+COPY spark-tasks /opt/spark/tasks
 
-#######exposing port 8080 for spark master UI
-EXPOSE 8080
-
-#default command: running an interactive spark shell in the local mode
-CMD ["/opt/spark/bin/spark-shell", "--master", "local[*]"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
