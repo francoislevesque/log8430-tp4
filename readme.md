@@ -47,7 +47,8 @@ db.createCollection('products')
 db.createCollection('invoices')
 ```
 
-## Redémarrer docker-compose
+Redémarrer docker-compose
+
 `docker-compose down`
 
 `docker-compose up -d && docker-compose scale slave=2`
