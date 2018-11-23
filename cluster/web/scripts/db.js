@@ -19,7 +19,7 @@ mongoose.model('products', Product)
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb://admin:secret@log8430-tp4.witify.io:27017/log8430-tp4')
+mongoose.connect('mongodb://admin:secret@db:27017/log8430-tp4')
 
 module.exports = {
     mongoose: mongoose

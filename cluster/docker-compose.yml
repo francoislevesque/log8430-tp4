@@ -1,4 +1,4 @@
-version: '2'
+version: '3.3'
 
 services:
   master:
@@ -22,20 +22,25 @@ services:
     depends_on:
       - master
   db:
-    image: mongo
+    build: ./mongo
+    volumes:
+      - mongo:/data/db
     ports:
       - 27017
-    command: "--smallfiles --logpath=/dev/null"
   web:
     build: ./web
     ports:
       - "3000:3000"
     links:
       - db
-    environment:
-      PORT: 3000
-    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/app.conf"]
+    depends_on:
+      - db
   client:
     build: ./client
     ports:
       - "80:80"
+    depends_on:
+      - web
+
+volumes:
+  mongo:

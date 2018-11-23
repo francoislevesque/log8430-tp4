@@ -15,7 +15,7 @@ $(document).ready(function() {
 
         $("#products > tbody > tr").remove();
 
-        $.getJSON("http://log8430-tp4.witify.io/api/products").done(function(res) {
+        $.getJSON("http://localhost:3000/api/products").done(function(res) {
             res.forEach(product => {
                 $("#products > tbody").append("<tr><td>" + product.id +
                                                 "</td><td>" + product.name +
@@ -92,7 +92,7 @@ $(document).ready(function() {
         let productPrice = parseInt($("#product-price").val());
         let productId = 0;
 
-        $.get("http://log8430-tp4.witify.io/api/products").done(function(res) {
+        $.post("http://localhost:3000/api/products").done(function(res) {
             res.forEach(product => {
                 if (product.id > productId) {
                     productId = product.id;
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
             productId++;
 
-            $.post("http://log8430-tp4.witify.io/api/products", {id: productId, name: productName, price: productPrice }).done(function(res) {
+            $.post("http://localhost:3000/api/products", {id: productId, name: productName, price: productPrice }).done(function(res) {
                 $("#product-res").text(res);
                 $("#product-res").show();
                 $("#products > tbody").append("<tr><td>" + productId +
@@ -124,7 +124,7 @@ $(document).ready(function() {
         
         let invoiceID = 0;
 
-        $.get("http://log8430-tp4.witify.io/api/invoices").done(function(res) {
+        $.get("http://localhost:3000/api/invoices").done(function(res) {
             res.forEach(invoice => {
                 if (invoice.id > invoiceID) {
                     invoiceID = invoice.id;
@@ -140,7 +140,7 @@ $(document).ready(function() {
 
             let jsonInvoiceProducts = JSON.stringify(invoiceProducts);
             
-            $.post("http://log8430-tp4.witify.io/api/invoices", {id: invoiceID, products: jsonInvoiceProducts}).done(function(res) {
+            $.post("http://localhost:3000/api/invoices", {id: invoiceID, products: jsonInvoiceProducts}).done(function(res) {
                 $("#invoice-res").text(res);
                 $("#invoice-res").show();
                 
@@ -175,8 +175,8 @@ $(document).ready(function() {
 
         $("#invoices > tbody > tr").remove();
 
-        $.getJSON("http://log8430-tp4.witify.io/api/invoices").done(function(resInvoices) {
-            $.getJSON("http://log8430-tp4.witify.io/api/products").done(function(resProducts) {
+        $.getJSON("http://localhost:3000/api/invoices").done(function(resInvoices) {
+            $.getJSON("http://localhost:3000/api/products").done(function(resProducts) {
                 resInvoices.forEach(invoice => {
                     let totalPrice = 0
                     let products = []

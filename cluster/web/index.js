@@ -1,8 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const shelljs = require('shelljs')
+const cors = require('cors')
 
 const app = express()
+app.use(cors())
 const db = require('./scripts/db')
 
 app.use(bodyParser.json())
