@@ -1,6 +1,5 @@
 FROM ubuntu:14.04
 
-
 ####installing [software-properties-common] so that we can use [apt-add-repository] to install Java8
 RUN apt-get update -y \
 &&  apt-get install software-properties-common -y \

@@ -3,6 +3,7 @@ version: '2'
 services:
   master:
     build: ./spark
+    image: log8430/spark
     container_name: master
     ports:
       - "8080:8080"
