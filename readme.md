@@ -1,7 +1,9 @@
 # Instructions
 
 ### Construire les containers Docker
+
 `cd cluster`
+
 `docker-compose build`
 
 ### Démarrer les containers Docker en choisissant le nombre de slaves
