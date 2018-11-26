@@ -92,7 +92,7 @@ $(document).ready(function() {
         let productPrice = parseInt($("#product-price").val());
         let productId = 0;
 
-        $.post("http://localhost:3000/api/products").done(function(res) {
+        $.get("http://localhost:3000/api/products").done(function(res) {
             res.forEach(product => {
                 if (product.id > productId) {
                     productId = product.id;
@@ -173,7 +173,7 @@ $(document).ready(function() {
     $("#get-invoices").submit(function(e) {
         e.preventDefault()
 
-        $("#invoices > tbody > tr").remove();
+        $("#invoices tr, #invoices td").remove();
 
         $.getJSON("http://localhost:3000/api/invoices").done(function(resInvoices) {
             $.getJSON("http://localhost:3000/api/products").done(function(resProducts) {

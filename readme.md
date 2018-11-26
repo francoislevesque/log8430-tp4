@@ -54,14 +54,8 @@ db.createCollection('invoices')
 
 ### Envoyer une tâche au master via spark-submit
 
-Se connecter en ssh au container spark-driver
+Se connecter en ssh au container spark-driver pour envoyer un script python au serveur master
 
-`docker-compose exec driver bash`
-
-Envoyer un script python au serveur master
-
-```
-opt/spark/bin/spark-submit \
-  --master spark://master:7077 \
-  opt/spark/tasks/FrequentProducts.py
+```bash
+docker-compose exec driver bash opt/spark/bin/spark-submit --master spark://master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.1 opt/spark/tasks/FrequentProducts.py
 ```

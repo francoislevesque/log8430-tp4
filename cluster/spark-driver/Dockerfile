@@ -21,6 +21,4 @@ RUN wget http://httpd-mirror.sergal.org/apache/spark/spark-2.4.0/spark-2.4.0-bin
 &&  tar -xzf spark-2.4.0-bin-hadoop2.7.tgz \
 &&  mv spark-2.4.0-bin-hadoop2.7 /opt/spark
 
-COPY spark-tasks /opt/spark/tasks
-
 ENTRYPOINT ["tail", "-f", "/dev/null"]

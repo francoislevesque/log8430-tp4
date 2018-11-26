@@ -21,6 +21,10 @@ services:
     container_name: driver
     depends_on:
       - master
+    volumes:
+      - type: bind
+        source: ./spark-driver/spark-tasks
+        target: /opt/spark/tasks
   db:
     build: ./mongo
     volumes:
@@ -41,6 +45,10 @@ services:
       - "80:80"
     depends_on:
       - web
+    volumes:
+      - type: bind
+        source: ./client/html
+        target: /usr/share/nginx/html
 
 volumes:
   mongo:
