@@ -57,18 +57,6 @@ Redémarrer docker-compose
 
 Se connecter en ssh au container spark-driver pour envoyer un script python au serveur master
 
-<<<<<<< HEAD
 ```bash
 docker-compose exec driver bash opt/spark/bin/spark-submit --master spark://master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.1 opt/spark/tasks/FrequentProducts.py
 ```
-=======
-`docker-compose exec driver bash`
-
-Envoyer un script python au serveur master
-
-```
-opt/spark/bin/spark-submit \
-  --master spark://master:7077 \
-  opt/spark/tasks/FrequentProducts.py
-```
->>>>>>> 7be75095c92787c0c891090e8ca5655854e0ac5d
