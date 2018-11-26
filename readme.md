@@ -55,8 +55,16 @@ Redémarrer docker-compose
 
 ### Envoyer une tâche au master via spark-submit
 
-Se connecter en ssh au container spark-driver pour envoyer un script python au serveur master
+Se connecter en ssh au container spark-master pour exécuter le script python sur les slaves 
 
 ```bash
-docker-compose exec driver bash opt/spark/bin/spark-submit --master spark://master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.1 opt/spark/tasks/FrequentProducts.py
+docker-compose exec master bash opt/spark/bin/spark-submit --master spark://master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.1 opt/spark/tasks/FrequentProducts.py
 ```
+
+On pourra alors voir un travail nommé "frequent-products" commener sur `localhost:8080`. Une fois le travail terminé, il est possible de voir le résultat dans la console. Le résultat possède le format suivant:
+
+`[(product_id, count),(product_id, count),...]`
+
+Les produits sont classés par fréquence d'apparition. Ainsi, le premier `product_id` est également le plus fréquent dans les factures. *On affiche uniquement les produits ayant une fréquence supérieure ou égale à 10*.
+
+Pour créer des produits et des factures, se rendre au client situé à `http://localhost:80`.

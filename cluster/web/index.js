@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const request = require('request')
 
 const app = express()
 app.use(cors())
@@ -50,6 +51,31 @@ app.get('/', function (req, res) {
     getInvoices().then((invoices) => {
         res.json(invoices);
     })
+})
+
+app.get('/api/spark/submit/frequent-products', function (req, res) {
+    request.post(
+        'http://master:6066/v1/submissions/create',
+        {
+            "action" : "CreateSubmissionRequest",
+            "appArgs" : [ "/opt/spark/tasks/FrequentProduct.py" ],
+            "appResource" : "/opt/spark/tasks/FrequentProduct.py",
+            "clientSparkVersion" : "2.3.2",
+            "environmentVariables" : {
+                "SPARK_ENV_LOADED" : "1"
+            },
+            "sparkProperties" : {
+                "spark.driver.supervise" : "false",
+                "spark.app.name" : "Simple App",
+                "spark.eventLog.enabled": "true",
+                "spark.submit.deployMode" : "cluster",
+                "spark.master" : "spark://spark-master:6066"
+            }
+        },
+        function (error, response, body) {
+            console.log(body)
+        }
+    )
 })
 
 app.listen(3000, function () {
