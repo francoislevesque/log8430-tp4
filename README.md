@@ -75,7 +75,10 @@ Pour créer des produits et des factures, se rendre au client situé à `http://
 
 Les commandes Docker présentées plus haut permettent la création de 5 conteneurs isolés les uns des autres: un client REST, un service REST, une base de données MongoDB, un master Spark ainsi que 2 slaves Spark. L'architecture du système est résumée dans le diagramme d'architecture suivant.
 
+<img align="center" src="clusterDiagram.png" alt="Diagramme d'architecture">
+
 ![Diagramme d'architecture](clusterDiagram.png)
+
 _Architecture du système_
 
 Nous avons utilisé Docker pour automatiser la création de conteneurs au lieu de créer des machines virtuelles pour des raisons de performance et de portabilité (étant donné que le système doit être transmis aux évaluateurs). Conformément aux requis présentés dans l'énoncé, chaque composant du système est indépendant, c'est-à-dire qu'on pourrait assigner chacun d'eux à une machine différente dans un vrai déploiement.
