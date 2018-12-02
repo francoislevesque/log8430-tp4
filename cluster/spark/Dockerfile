@@ -24,6 +24,8 @@ RUN wget http://httpd-mirror.sergal.org/apache/spark/spark-2.4.0/spark-2.4.0-bin
 
 # adding conf files
 COPY master.conf /opt/conf/master.conf
+COPY master-web.conf /opt/conf/master-web.conf 
+COPY master-all.conf /opt/conf/master-all.conf 
 COPY slave.conf /opt/conf/slave.conf 
 
 ############################
@@ -35,9 +37,6 @@ RUN apt-get update -y
 RUN apt-get install curl -y
 RUN curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
-
-# Install pm2
-RUN npm install pm2 -g
 
 # Copy web service
 WORKDIR /app
@@ -51,10 +50,3 @@ EXPOSE 3001
 
 # Expose port 8080 for spark master UI
 EXPOSE 8080
-
-# Run an interactive spark shell in the local mode
-CMD ["pm2-runtime", "index.js"]
-#COPY cmd.sh /app
-#ENTRYPOINT ["cmd.sh"]
-
-#CMD ["/opt/spark/bin/spark-shell", "--master", "local[*]"]

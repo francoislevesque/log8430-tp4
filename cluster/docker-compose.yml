@@ -16,7 +16,7 @@ services:
       - type: bind
         source: ./spark/spark-tasks
         target: /opt/spark/tasks
-    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/master.conf"]
+    command: ["/usr/bin/supervisord", "--configuration=/opt/conf/master-all.conf"]
   slave:
     build: ./spark
     depends_on:

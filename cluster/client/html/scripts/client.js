@@ -10,6 +10,22 @@ $(document).ready(function() {
         }, 3000);
     }
 
+    $('#spark-task').click(function(e) {
+        $('.spark-text').hide();
+        $('.spark-loading').show();
+        $.get("http://localhost:3001/api/spark/frequent-products").done(function(res) {
+            console.log(res);
+            $('.spark-text').show();
+            $('.spark-loading').hide();
+            $('.spark-results').show();
+        }).fail(function(err) {
+            console.log(err);
+            $('.spark-text').show();
+            $('.spark-loading').hide();
+            $('.spark-results').show();
+        });  
+    });
+
     $("#get-products").submit(function(e) {
         e.preventDefault()
 
@@ -83,7 +99,6 @@ $(document).ready(function() {
         }
         $(this).parent().parent().remove();
     });
-
 
     $("#create-product").submit(function(e) {
         e.preventDefault();
