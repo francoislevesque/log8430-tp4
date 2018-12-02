@@ -79,11 +79,14 @@ Les commandes Docker présentées plus haut permettent la création de 5 contene
     <img align="center" src="clusterDiagram.png" alt="Diagramme d'architecture">
 </p>
 <p align="center"> 
-    Architecture du système
+    <i>Architecture du système</i>
 </p>
 
 Nous avons utilisé Docker pour automatiser la création de conteneurs au lieu de créer des machines virtuelles pour des raisons de performance et de portabilité (étant donné que le système doit être transmis aux évaluateurs). Conformément aux requis présentés dans l'énoncé, chaque composant du système est indépendant, c'est-à-dire qu'on pourrait assigner chacun d'eux à une machine différente dans un vrai déploiement.
 
 ### Flux de travail
 
+Le flux de travail est le même pour toutes les requêtes du client autre que celle visant à identifier les produits fréquents. Lorsque que le client lance ces requêtes, elles sont reçues et traitées par le service REST. Si le travail requiert la lecture ou l'ajout d'information dans la base de données, le service contacte le conteneur sur lequel roule MongoDB pour y lire ou y ajouter des données. Le service REST retourne ensuite une réponse au client dépendemment du succès de la requête.
+
+Dans le cas où le client désire identifier les produits fréquents, il lance ici aussi une requête au service REST. Lorsqu'il reçoit cette requête, le service REST fait une requête au conteneur où se trouve le Master Spark pour lui demander d'exécuter le travail permettant d'identifier les produits qui se produisent fréquement dans les factures de la base de données NoSQL. Le Master contacte alors le conteneur où roule MongoDB pour obtenir un lot de données à analyser. Lorsqu'il dispose de ces données, il lance l'analyse et contacte les deux conteneurs Slave pour leur déléguer le travail. Les conteneurs Slaves accomplissent le travail et retournent le résultat à Master. Master retourne ensuite une réponse au service REST, qui à son tour retourne une réponse à la requête origniellement faite par le client. 
 
