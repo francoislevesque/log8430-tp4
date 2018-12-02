@@ -4,7 +4,6 @@ RUN npm install pm2 -g
 
 WORKDIR /app
 COPY package.json /app
-COPY package-lock.json /app
 RUN cd /app && npm install
 ENV PATH /app/node_modules/.bin:$PATH
 
