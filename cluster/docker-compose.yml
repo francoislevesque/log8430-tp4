@@ -11,6 +11,7 @@ services:
       - "8888:8888" 
       - "8081:8081"
       - "6066:6066"
+      - "3001:3001"
     volumes:
       - type: bind
         source: ./spark/spark-tasks

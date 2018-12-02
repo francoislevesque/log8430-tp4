@@ -58,7 +58,7 @@ Redémarrer docker-compose
 Se connecter en ssh au container spark-master pour exécuter le script python sur les slaves 
 
 ```bash
-docker-compose exec master bash opt/spark/bin/spark-submit --master spark://master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.1 opt/spark/tasks/FrequentProducts.py
+docker-compose exec master bash /opt/spark/bin/spark-submit --master spark://master:7077 --packages org.mongodb.spark:mongo-spark-connector_2.11:2.3.1 /opt/spark/tasks/FrequentProducts.py
 ```
 
 On pourra alors voir un travail nommé "frequent-products" commener sur `localhost:8080`. Une fois le travail terminé, il est possible de voir le résultat dans la console. Le résultat possède le format suivant:
