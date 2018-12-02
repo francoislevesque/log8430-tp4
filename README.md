@@ -53,7 +53,9 @@ Redémarrer docker-compose
 
 `docker-compose up -d && docker-compose scale slave=2`
 
-### Envoyer une tâche au master via spark-submit
+### Envoyer manuellement une tâche au master via spark-submit
+
+Les instructions suivantes permettent d'envoyer une tâche manuellement au master à des fins de test. L'endpoint `GET /api/spark/frequent-products` du service REST envoie automatiquement une tâche au master.
 
 Se connecter en ssh au container spark-master pour exécuter le script python sur les slaves 
 
