@@ -1,3 +1,13 @@
+# Auteurs
+LOG8430  
+Automne 2018  
+Groupe 1
+
+Hacène Khemici (1805747)  
+François Lévesque (1820147)  
+Jean-Christophe Martel (1794036)  
+Charlotte Sarrazin (1792765)
+
 # Instructions
 
 ### Construire les containers Docker
