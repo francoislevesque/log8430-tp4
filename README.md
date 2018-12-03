@@ -1,7 +1,8 @@
 # Auteurs
 *LOG8430  
 Automne 2018  
-Groupe de laboratoire 02*
+Groupe de laboratoire 02  
+Équipe November*
 
 Hacène Khemici (1805747)  
 François Lévesque (1820147)  
