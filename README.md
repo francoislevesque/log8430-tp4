@@ -1,7 +1,7 @@
 # Auteurs
-LOG8430  
+*LOG8430  
 Automne 2018  
-Groupe 1
+Groupe de laboratoire 02*
 
 Hacène Khemici (1805747)  
 François Lévesque (1820147)  
@@ -9,6 +9,8 @@ Jean-Christophe Martel (1794036)
 Charlotte Sarrazin (1792765)
 
 # Instructions
+
+Notre [démo sur YouTube](https://www.youtube.com/watch?v=XIPSXyRRPLA) suit les instructions suivantes.
 
 ### Construire les containers Docker
 
